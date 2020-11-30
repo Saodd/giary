@@ -7,6 +7,7 @@
 ## 使用方法
 
 ```shell
+$ go mod init 你的项目根目录名字
 $ go get github.com/Saodd/giary
 ```
 
@@ -16,7 +17,7 @@ package main
 import "github.com/Saodd/giary/giary"
 
 func main() {
-	giary.Run("giary")  // 你的项目根目录名称
+	giary.Run("你的项目根目录名字")
 }
 ```
 

@@ -11,7 +11,6 @@ var ProjectDirname = "giary"
 var logger = log.New(os.Stdout, "", log.Lshortfile)
 
 func EncryptAll(client *Client) {
-	check()
 	for _, filepath := range RecurListMds("unlock") {
 		plainText, err := ioutil.ReadFile(filepath)
 		if err != nil {
@@ -30,7 +29,6 @@ func EncryptAll(client *Client) {
 }
 
 func DecryptAll(client *Client) {
-	check()
 	for _, filepath := range RecurListMds("locked") {
 		cipherText, err := ioutil.ReadFile(filepath)
 		if err != nil {
@@ -62,6 +60,10 @@ func check() {
 	if err := os.MkdirAll("unlock", 0755); err != nil {
 		logger.Fatalln(err)
 	}
+	if err := os.MkdirAll("locked", 0755); err != nil {
+		logger.Fatalln(err)
+	}
+	checkGitIgnore()
 }
 
 // RecurListMds 将递归遍历指定目录，返回所有 .md 文件的路径。

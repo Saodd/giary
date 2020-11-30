@@ -8,6 +8,8 @@ import (
 )
 
 func Run(rootDirName string) {
+	ProjectDirname = rootDirName
+	check()
 	switch os.Args[len(os.Args)-1] {
 	case "lock":
 		fmt.Print("请输入密码:> ")
